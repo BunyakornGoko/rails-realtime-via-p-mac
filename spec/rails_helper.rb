@@ -24,7 +24,7 @@ require 'capybara/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -76,4 +76,7 @@ RSpec.configure do |config|
     driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
     Capybara.app_host = "http://127.0.0.1"
   end
+
+  # Add this line to include Factory Bot methods
+  config.include FactoryBot::Syntax::Methods
 end

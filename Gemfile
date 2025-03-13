@@ -52,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -66,5 +67,3 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-
-gem "factory_bot", "~> 6.5"
