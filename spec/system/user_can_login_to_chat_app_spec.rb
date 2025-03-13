@@ -13,6 +13,13 @@ describe "User can login to chat app", type: :system do
             user_clicks_login_button
             user_should_see_chatroom_page
         end
+
+        it "allows user to create a room" do
+            user_goes_to_login_page
+            user_enters_email_and_password
+            user_clicks_login_button
+            user_should_create_room
+        end
     end
 
     it "does not allow anonymous user to use the app" do
@@ -43,5 +50,12 @@ describe "User can login to chat app", type: :system do
 
     def user_should_see_chatroom_page
         expect(page).to have_content 'General' 
+    end
+
+    def user_should_create_room
+        visit '/rooms'
+        fill_in 'Name', with: 'General2'
+        click_button 'Create Room'
+        expect(page).to have_content 'General2' 
     end
 end 
